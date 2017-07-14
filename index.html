@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Explore The Neighborhood</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/sidebar.css">
+    </head>
+    <body>
+        <div class="side-menu">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <div class="brand-wrapper">
+
+                        <!-- mobile menu -->
+                        <button type="button" class="navbar-toggle" data-bind="click: toggleNavbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <!-- show all markers -->
+                        <div class="brand-name-wrapper">
+                            <a class="navbar-brand" id="main-title" data-bind="click: selectAll"><span class="glyphicon glyphicon-home"></span> Show All Restaurants</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-menu-container">
+                    <ul class="nav navbar-nav">
+                        <li class="panel panel-default" class="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-1" class="drop-category">
+							    <span class="glyphicon glyphicon-list"></span>
+                                Choose An Category                        
+                            </a>
+                            <div id="dropdown-1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav" data-bind="foreach: categoryList().sort(function( a, b ) { return a.categoryName > b.categoryName ? 1 : -1 })">
+                                        <li><a data-bind="text: categoryName, click: $parent.selectCategory"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="panel panel-default" class="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-2" class="drop-category">
+							    <span class="glyphicon glyphicon-cutlery"></span>
+                                Restaurants                             
+                            </a>
+                            <div id="dropdown-2" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <ul data-bind="foreach: getMarkers().sort(function( a, b ) { return a.name > b.name ? 1 : -1 })" class="nav navbar-nav">
+                                        <li>
+                                            <a data-bind="click: $parent.toggleMarker">
+                                                <span data-bind="text: name"></span>
+                                                <span data-bind="visible: $parent.windowOpen() == infoWindow"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container-fluid">
+            <div class="side-body">
+                <div id="map" data-bind="click: closeNavbar"></div>
+            </div>
+        </div>
+
+        <script src="js/lib/knockout-3.2.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/app.js"></script>
+        <script async defer type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDWlPKDR5aEjaAGfFVNdJWcpnuSUUtMao&v=3&callback=initMap" onerror="viewM.errorMessage('Google Maps')">
+        </script>
+    </body>
+</html>
