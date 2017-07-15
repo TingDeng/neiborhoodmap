@@ -12,10 +12,13 @@ To Set up:
 To use the app:
 
 On the sidebar menu, click on "Choose a category" from dropdown menu, you can find three categories for marked restaurants.
+
 The restaurant list is by default to show all restaurants, but when you select a category, you will see only restaurants with that category. 
-Click the marker on map or restaurant name in sidebar, you will see a google info window open for the restaurant that shows address, open status,
-contact and rating infomations as a result from FourSquare API search. 
+
+Click the marker on map or restaurant name in sidebar, you will see a google info window open for the restaurant that shows address, open status, contact and rating infomations as a result from FourSquare API search. 
+
 To see a full list of restaurants again after filtering, click the button"Show all restaurants".
+
 The map will be recentered automatically on different screen size.
 
 
